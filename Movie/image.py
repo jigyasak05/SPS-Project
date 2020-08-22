@@ -10,7 +10,7 @@ def get_poster(name):
 
 	headers = {
 	    'x-rapidapi-host': "imdb8.p.rapidapi.com",
-	    'x-rapidapi-key': "9fc5fa1be3msh6dda2679ff9b9a5p1c27afjsn70a89581d46a"
+	    'x-rapidapi-key': 
 	    }
 
 	response = requests.request("GET", url, headers=headers, params=querystring)
