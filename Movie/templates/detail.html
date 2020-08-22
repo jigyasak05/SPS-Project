@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}The Avengers{% endblock %}
+
+{% block content %}
+
+
+ <div class="container-fluid col-sm-offset-1"> 
+
+    <div class="row">
+
+        <!-- Left Movie Info -->
+        <div class="col-lg-18">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="#">                            
+                      
+                       <img src= "{{ link }}" class="img-responsive" width="350" height="550">
+                    </a>
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+        <!-- Right Movie Info -->
+        
+        <div class="col-lg-16"> 
+          <h1>{{ post.title }}</h1>
+            <p style="color:#444444;">IMDb {{ "{:.1f}".format(post.wr) }}</p>
+            <p style="color:#444444;">Genres {{ post.genres }}</p>
+            <p style="color:#444444;">Overview: {{ post.overview }}</p>
+    </div>        
+    
+          
+
+
+    </div>
+</div>
+{% endblock content %}

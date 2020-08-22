@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 style="color:#ffffff;">Movie recommendations</h1>
+    {%for i in range(0, 100)%} 
+
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" style="color:#444444;" href="#">{{ posts[i].year }}</a>
+              <small class="text-muted">{{ posts[i].year }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('detail', index=i) }}">{{ posts[i].title }}</a></h2>
+            <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(posts[i].wr) }}</p>
+            <a class="article-content" style="color:#444444;" href="#">Genres: {{ posts[i].genres }}</a>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
