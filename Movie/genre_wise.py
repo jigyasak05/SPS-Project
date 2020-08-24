@@ -23,7 +23,7 @@ def genre_res(genre, percentile=0.85):
     C = vote_averages.mean()
     m = vote_counts.quantile(0.95)
     df['year'] = pd.to_datetime(df['release_date'], errors='coerce').apply(lambda x: str(x).split('-')[0] if x != np.nan else np.nan)
-    qualified = df[(df['vote_count'] >= m) & (df['vote_count'].notnull()) & (df['vote_average'].notnull())][['title', 'year', 'vote_count', 'vote_average', 'popularity', 'genres','overview']]
+    qualified = df[(df['vote_count'] >= m) & (df['vote_count'].notnull()) & (df['vote_average'].notnull())][['id', 'title', 'year', 'vote_count', 'vote_average', 'popularity', 'genres','overview', 'release_date']]
     qualified['vote_count'] = qualified['vote_count'].astype('int')
     qualified['vote_average'] = qualified['vote_average'].astype('int')
     qualified['wr'] = qualified.apply(weighted_rating, axis=1)
@@ -37,7 +37,7 @@ def genre_res(genre, percentile=0.85):
     C = vote_averages.mean()
     m = vote_counts.quantile(percentile)
     
-    qualified = df[(df['vote_count'] >= m) & (df['vote_count'].notnull()) & (df['vote_average'].notnull())][['title', 'year', 'vote_count', 'vote_average', 'popularity','overview']]
+    qualified = df[(df['vote_count'] >= m) & (df['vote_count'].notnull()) & (df['vote_average'].notnull())][['id', 'title', 'year', 'vote_count', 'vote_average', 'popularity','overview', 'release_date']]
     qualified['vote_count'] = qualified['vote_count'].astype('int')
     qualified['vote_average'] = qualified['vote_average'].astype('int')
     

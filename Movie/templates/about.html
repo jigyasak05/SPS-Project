@@ -1,37 +1,36 @@
 {% extends "layout.html" %}
-{% block title %}The Avengers{% endblock %}
+{% block title %}About{% endblock %}
 
 {% block content %}
 
 
  <div class="container-fluid col-sm-offset-1"> 
 
-    <div class="row">
+   
 
         <!-- Left Movie Info -->
-        <div class="col-lg-18">
-            <div class="panel panel-default">
-                <div class="panel-body">
+       
+         <div style="position:fixed; left:50px; top:80px;">    
+               
                     <a href="#">                            
                       
-                       <img src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" class="img-responsive" width="350" height="550">
+                       <img src= "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" class="img-responsive" width="280" height="400">
                     </a>
-                    <h2></h2>
-                </div>
-            </div>
+          
         </div>
+     
         <!-- Right Movie Info -->
+        <div style="position:fixed; left:350px; top:80px;">
         
-        <div class="col-lg-16 col-lg-offset-5"> 
-        	<h1>The Avengers</h1>
-            <p>IMDb</p>
-            <p>Genres</p>
-            <p>Overview</p>
-		</div>	      
+          <h1>Interstellar</h1>
+            <p style="color:#444444;">Average IMDb: 7.9</p>
+            <p style="color:#444444;">Review count: 11872</p>
+            <p style="color:#444444;">Overview: Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.</p>
+       
     
-        	
+        </div>
 
-
-    </div>
+ <div style="position:fixed; right:50px; top:80px;">
+     <a class="btn btn-outline-info" href="#">Get Similar Movies</a>
 </div>
 {% endblock content %}

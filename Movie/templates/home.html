@@ -14,8 +14,8 @@ body {
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 5;
-  left: 0;
+  top: 0.5;
+  right: 0;
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
@@ -25,7 +25,7 @@ body {
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
   color: white;
   display: block;
   transition: 0.3s;
@@ -38,13 +38,15 @@ body {
 .sidebar .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
-  font-size: 25px;
-  margin-left: 25px;
+  left: 175px;
+  font-size: 30px;
+  margin-right: 175px;
 }
 
 .openbtn {
   font-size: 20px;
+  left: 500px;
+  top: 150px;
   cursor: pointer;
   background-color: #111;
   color: white;
@@ -57,7 +59,7 @@ body {
 }
 
 #main {
-  transition: margin-left .1s;
+  transition: margin-right .1s;
   padding: 16px;
 }
 
@@ -70,56 +72,53 @@ body {
 </head>
 <body>
 
-<div id="mySidebar" class="sidebar">
+<div id="mySidebar" class="sidebar" style = "position:fixed; top:50px;" >
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#">All</a>
-  <a href="#">Action</a>
-  <a href="#">Thriller</a>
-  <a href="#">Drama</a>
-  <a href="#">Crime</a>
-  <a href="#">Adventure</a>
-  <a href="#">Fantasy</a>
-  <a href="#">Romance</a>
-  <a href="#">Comedy</a>
-  <a href="#">Mystery</a>
-  <a href="#">Family</a>
-  <a href="#">Crime</a>
+  <a href="{{ url_for('filter', genre= 'All') }}">All</a>
+  <a href="{{ url_for('filter', genre= 'Action') }}">Action</a>
+  <a href="{{ url_for('filter', genre= 'Thriller') }}">Thriller</a>
+  <a href="{{ url_for('filter', genre= 'Drama') }}">Drama</a>
+  <a href="{{ url_for('filter', genre= 'Crime') }}">Crime</a>
+  <a href="{{ url_for('filter', genre= 'Adventure') }}">Adventure</a>
+  <a href="{{ url_for('filter', genre= 'Fantasy') }}">Fantasy</a>
+  <a href="{{ url_for('filter', genre= 'Romance') }}">Romance</a>
+  <a href="{{ url_for('filter', genre= 'Comedy') }}">Comedy</a>
+  <a href="{{ url_for('filter', genre= 'Mystery') }}">Mystery</a>
+  <a href="{{ url_for('filter', genre= 'Family') }}">Family</a>
   
   
 </div>
-
-<div id="main">
+<div style = "position:fixed; left:950px; top:80px; background-color:yellow;">
   <button class="openbtn" onclick="openNav()">☰ Filter Genre</button>  
-
 </div>
 
 <script>
 function openNav() {
-  document.getElementById("mySidebar").style.width = "125px";
-  document.getElementById("main").style.marginLeft = "125px";
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginRight = "250px";
 }
 
 function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("main").style.marginRight= "0";
 }
 </script>
    
 </body>
-</html> 
+</html>
 
-<h1 style="color:#ffffff;">Movie recommendations</h1>
-    {%for i in range(0, 100)%} 
-
+<h1 style="color:#ffffff;">{{ category }}</h1>
+    {%for post in posts%} 
+        
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" style="color:#444444;" href="#">{{ posts[i].year }}</a>
-              <small class="text-muted">{{ posts[i].year }}</small>
+              <a class="mr-2" style="color:#444444;" href="#">{{ post.year }}</a>
+             
             </div>
-            <h2><a class="article-title" href="{{ url_for('detail', index=i) }}">{{ posts[i].title }}</a></h2>
-            <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(posts[i].wr) }}</p>
-            <a class="article-content" style="color:#444444;" href="#">Genres: {{ posts[i].genres }}</a>
+            <h2><a class="article-title" href="{{ url_for('detail', id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(post.wr) }}</p>
+            <a class="article-content" style="color:#444444;" href="#"></a>
           </div>
         </article>
     {% endfor %}
