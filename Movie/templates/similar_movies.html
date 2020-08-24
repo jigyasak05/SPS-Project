@@ -7,7 +7,7 @@
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" style="color:#444444;" href="#">{{ post.year }}</a>
-              <small class="text-muted">{{ post.year }}</small>
+              
             </div>
             <h2><a class="article-title" href="{{ url_for('detail', id=post.id) }}">{{ post.title }}</a></h2>
             <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(post.wr) }}</p>
