@@ -1,17 +1,124 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1 style="color:#ffffff;">Movie recommendations</h1>
-    {%for i in range(0, 100)%} 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
 
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0.5;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  left: 175px;
+  font-size: 30px;
+  margin-right: 175px;
+}
+
+.openbtn {
+  font-size: 20px;
+  left: 500px;
+  top: 150px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-right .1s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="mySidebar" class="sidebar" style = "position:fixed; top:50px;" >
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="{{ url_for('filter', genre= 'All') }}">All</a>
+  <a href="{{ url_for('filter', genre= 'Action') }}">Action</a>
+  <a href="{{ url_for('filter', genre= 'Thriller') }}">Thriller</a>
+  <a href="{{ url_for('filter', genre= 'Drama') }}">Drama</a>
+  <a href="{{ url_for('filter', genre= 'Crime') }}">Crime</a>
+  <a href="{{ url_for('filter', genre= 'Adventure') }}">Adventure</a>
+  <a href="{{ url_for('filter', genre= 'Fantasy') }}">Fantasy</a>
+  <a href="{{ url_for('filter', genre= 'Romance') }}">Romance</a>
+  <a href="{{ url_for('filter', genre= 'Comedy') }}">Comedy</a>
+  <a href="{{ url_for('filter', genre= 'Mystery') }}">Mystery</a>
+  <a href="{{ url_for('filter', genre= 'Family') }}">Family</a>
+  
+  
+</div>
+<div style = "position:fixed; left:950px; top:80px; background-color:yellow;">
+  <button class="openbtn" onclick="openNav()">☰ Filter Genre</button>  
+</div>
+
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginRight = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginRight= "0";
+}
+</script>
+   
+</body>
+</html>
+
+<h1 style="color:#ffffff;">{{ category }}</h1>
+    {%for post in posts%} 
+        
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" style="color:#444444;" href="#">{{ posts[i].year }}</a>
-              <small class="text-muted">{{ posts[i].year }}</small>
+              <a class="mr-2" style="color:#444444;" href="#">{{ post.year }}</a>
+             
             </div>
-            <h2><a class="article-title" href="{{ url_for('detail', index=i) }}">{{ posts[i].title }}</a></h2>
-            <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(posts[i].wr) }}</p>
-            <a class="article-content" style="color:#444444;" href="#">Genres: {{ posts[i].genres }}</a>
+            <h2><a class="article-title" href="{{ url_for('detail', id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(post.wr) }}</p>
+            <a class="article-content" style="color:#444444;" href="#"></a>
           </div>
         </article>
     {% endfor %}

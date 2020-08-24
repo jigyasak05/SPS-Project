@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 style="color:#ffffff;">Movies similar to {{ movie_name }}</h1>
+    {%for post in posts%} 
+        
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" style="color:#444444;" href="#">{{ post.year }}</a>
+              <small class="text-muted">{{ post.year }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url_for('detail', id=post.id) }}">{{ post.title }}</a></h2>
+            <p class="article-content" style="color:#444444;">IMDb rating: {{ "{:.1f}".format(post.wr) }}</p>
+            <a class="article-content" style="color:#444444;" href="#"></a>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

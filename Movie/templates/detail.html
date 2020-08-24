@@ -1,31 +1,25 @@
 {% extends "layout.html" %}
-{% block title %}The Avengers{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
 
 
  <div class="container-fluid col-sm-offset-1"> 
 
-    <div class="row">
-
-        <!-- Left Movie Info -->
-        <div class="col-lg-18">
-            <div class="panel panel-default">
-                <div class="panel-body">
+        
+        <div style="position:fixed; left:50px; top:80px;"> 
                     <a href="#">                            
                       
-                       <img src= "{{ link }}" class="img-responsive" width="350" height="550">
+                       <img src= "{{ link }}" class="img-responsive" width="280" height="400">
                     </a>
-                    <h2></h2>
-                </div>
-            </div>
+               
         </div>
         <!-- Right Movie Info -->
         
-        <div class="col-lg-16"> 
+        <div style="position:fixed; left:350px; top:80px;">
           <h1>{{ post.title }}</h1>
-            <p style="color:#444444;">IMDb {{ "{:.1f}".format(post.wr) }}</p>
-            <p style="color:#444444;">Genres {{ post.genres }}</p>
+            <p style="color:#444444;">Average IMDb: {{ post.vote_average }}</p>
+            <p style="color:#444444;">Review count: {{ post.vote_count }}</p>
             <p style="color:#444444;">Overview: {{ post.overview }}</p>
     </div>        
     
@@ -33,5 +27,9 @@
 
 
     </div>
+</div>
+
+ <div style="position:fixed; right:50px; top:80px;">
+     <a class="btn btn-outline-info" href="{{ url_for('similar_movies', movie_name=post.title) }}">Get Similar Movies</a>
 </div>
 {% endblock content %}
