@@ -2,6 +2,7 @@ import requests
 import pprint
 import json
 
+
 def get_poster(name):
 
 	url = "https://imdb8.p.rapidapi.com/title/find"
