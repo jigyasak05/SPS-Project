@@ -6,7 +6,7 @@ import pandas as pd
 import pprint
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+app.config['SECRET_KEY'] = ''
 
 df=pd.read_csv('data/dataset_short.csv')
 popular_movies= popular_movies()
